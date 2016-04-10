@@ -9,8 +9,7 @@ class User_model extends CI_Model{
 		$this->load->database();
     }
 	
-	public function check($username=NULL, $password=NULL)
-	{
+	private function query_get_user($username=NULL){
 		$this->db->select('`user`.ID_USER,
 							`user`.USERNAME,
 							`user`.EMAIL,
@@ -20,10 +19,30 @@ class User_model extends CI_Model{
 							`user`.`LEVEL`,
 							`user`.IS_AKTIF');
 		$this->db->from('`user`');
-		$this->db->where('USERNAME',$username);
+	}
+	
+	public function check($username=NULL, $password=NULL)
+	{
+		$this->query_get_user($username);
+		if(!empty($username)){
+			$this->db->where('USERNAME',$username);
+		}
 		if(!empty($password))
 		{
 			$this->db->where('PASSWORD',md5($password));
+		}
+		$result = $this->db->get();
+		return $result;
+	}
+	
+	public function get_user($username=NULL,$search=FALSE, $page=NULL)
+	{
+		$this->query_get_user($username);
+		if(!empty($username)){
+			$this->db->where('USERNAME',$username);
+		}
+		if($search){
+			$this->db->or_like('LOWER(USERNAME)',strtolower($username));
 		}
 		$result = $this->db->get();
 		return $result;
@@ -40,6 +59,12 @@ class User_model extends CI_Model{
 		);
 		$this->db->set('id_user', 'GENERATEID()', FALSE);
 		$result = $this->db->insert('`user`',$data);
+		if(!empty($page)){
+			$per_post = $this->config->item('user_show');
+			$page_now = ($page - 1) * $per_post;
+			$this->db->offset($page_now);
+			$this->db->limit($per_post);
+		}
 		return $result;
 	}
 	
