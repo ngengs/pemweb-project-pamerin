@@ -100,7 +100,7 @@ class Profile extends PRJCT_Controller {
 	{
 		if(!empty($username)){
 			$this->load->model('user_model');
-			$user = $this->user_model->check($username);
+			$user = $this->user_model->get_user($username);
 			if(!empty($user->result())){
 				$this->data['title'] = 'Following of @'.$username;
 				$user=$user->result();
@@ -133,7 +133,7 @@ class Profile extends PRJCT_Controller {
 	{
 		if(!empty($username)){
 			$this->load->model('user_model');
-			$user = $this->user_model->check($username);
+			$user = $this->user_model->get_user($username);
 			if(!empty($user->result())){
 				$this->data['title'] = 'Followers of @'.$username;
 				$user=$user->result();
