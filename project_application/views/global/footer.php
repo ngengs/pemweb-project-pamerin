@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="modal-area">
     	<!-- Modal Search-->
 		<div class="modal fade" id="modal-search" tabindex="-1" role="dialog" aria-labelledby="modal-search-label">
-		  <form class="form" method="post" action="#">
+		  <form class="form" method="post" action="<?php echo base_url($this->config->item('url_search_submit'));?>">
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		        <h4 class="modal-title" id="myModalLabel">Search</h4>
 		      </div>
 		      <div class="modal-body">
-	      		<input type="text" class="form-control" id="search-input" placeholder="Search">
+	      		<input type="text" class="form-control" name="search_query" id="search-input" placeholder="Search">
 		      </div>
 		      <div class="modal-footer">
 		        <button type="submit" class="btn btn-primary">Search</button>
