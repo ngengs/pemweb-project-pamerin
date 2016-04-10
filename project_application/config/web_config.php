@@ -13,7 +13,10 @@ $config['media_upload'] = "uploads";
 $config['media_avatar'] = "avatar";
 $config['media_avatar_name'] = "avatar_picture";
 
-$config['url_hashtags'] = 'search/hashtags/';
+$config['url_search_submit'] = 'search/search_submit/';
+$config['url_search_user'] = 'search/users/';
+$config['url_search_hashtags'] = 'search/hashtags/';
+$config['url_hashtags'] = $config['url_search_hashtags'];
 $config['url_profile'] = 'profile/user/';
 $config['url_following'] = 'profile/following/';
 $config['url_follower'] = 'profile/followers/';
