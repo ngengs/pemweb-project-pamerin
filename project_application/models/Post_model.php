@@ -62,12 +62,15 @@ class Post_model extends CI_Model{
 		$this->db->order_by('post.DATE_POST','DESC');
 	}
 	
-	public function get_timeline($id_user,$id_following = array() , $page=1){
+	public function get_timeline($id_user,$id_following = array() , $page=1, $search=NULL){
 		
 		$this->generate_get_timeline_query($id_user,$id_following);
 		$per_post = $this->config->item('timeline_post');
 		$page_now = ($page - 1) * $per_post;
 		$this->db->offset($page_now);
+		if(!empty($search)){
+			$this->db->like('LOWER(post.DESCRIPTION)',strtolower($search));
+		}
 		$this->db->limit($per_post);
 		$post = $this->db->get();
 		$return=array();
@@ -98,8 +101,11 @@ class Post_model extends CI_Model{
 		return $return;
 	}
 	
-	public function get_timeline_count($id_user,$id_following=array()){
+	public function get_timeline_count($id_user,$id_following=array(), $search=NULL){
 		$this->generate_get_timeline_query($id_user,$id_following);
+		if(!empty($search)){
+			$this->db->like('LOWER(post.DESCRIPTION)',strtolower($search));
+		}
 		return $this->db->count_all_results();
 	}
 	
