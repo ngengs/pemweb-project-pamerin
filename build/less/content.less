@@ -186,7 +186,7 @@ html,body{
         .cards-list{
           >ul{
             >li{
-              padding:@select-cards-padding;
+              padding:@padding-default;
             }
           }
           &.card-list-user{
@@ -411,4 +411,26 @@ html,body{
     
   }
   
+}
+
+.nav-inverted{
+  &.nav-pills{
+    > li {
+      > a {
+        color:@select-nav-invert-cl;
+        background:@select-nav-invert-bg;
+        &:hover,&:focus{
+          background: darken(@select-nav-invert-bg,5%);
+        }
+      }
+      &.active > a {
+        &,
+        &:hover,
+        &:focus {
+          color: @select-nav-invert-cl-active;
+          background-color: @select-nav-invert-bg-active;
+        }
+      }
+    }
+  }
 }
