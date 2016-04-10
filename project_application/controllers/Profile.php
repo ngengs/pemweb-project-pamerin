@@ -116,6 +116,7 @@ class Profile extends PRJCT_Controller {
 				}
 				$this->data['page_now']=$page;
 				$this->data['user'] = $following->result();
+				$this->data['url_pagination'] = $this->config->item('url_following').$username.'/';
 				$this->data['page_total'] = $page_total;
 				$this->data['my_following'] = $my_following;
 				$this->load->view('global/header',$this->data);
@@ -149,6 +150,7 @@ class Profile extends PRJCT_Controller {
 				}
 				$this->data['page_now']=$page;
 				$this->data['user'] = $following->result();
+				$this->data['url_pagination'] = $this->config->item('url_follower').$username.'/';
 				$this->data['page_total'] = $page_total;
 				$this->data['my_following'] = $my_following;
 				$this->load->view('global/header',$this->data);
