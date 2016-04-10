@@ -1,0 +1,92 @@
+//
+// Pager pagination
+// --------------------------------------------------
+
+
+.pager {
+  padding-left: 0;
+  margin: @line-height-computed 0;
+  list-style: none;
+  text-align: center;
+  &:extend(.clearfix all);
+  li {
+    display: inline;
+    > a,
+    > span {
+      display: inline-block;
+      padding: 5px 14px;
+      background-color: @pager-bg;
+      border: 1px solid @pager-border;
+      border-radius: @pager-border-radius;
+    }
+
+    > a:hover,
+    > a:focus {
+      text-decoration: none;
+      background-color: @pager-hover-bg;
+    }
+  }
+
+  .next {
+    > a,
+    > span {
+      float: right;
+    }
+  }
+
+  .previous {
+    > a,
+    > span {
+      float: left;
+    }
+  }
+
+  .disabled {
+    > a,
+    > a:hover,
+    > a:focus,
+    > span {
+      color: @pager-disabled-color;
+      background-color: @pager-bg;
+      cursor: @cursor-disabled;
+    }
+  }
+  
+  &.pager-material{
+    li {
+      > a,
+      > span {
+        color:@text-color;
+        padding: 5px 14px;
+        background-color: @select-fab-bg;
+        border: 1px solid darker(@select-fab-bg,10%);
+        border-radius: 0;
+        .shadow(1);
+        @transition: all @select-transition;
+        .transition(@transition);
+        text-transform:uppercase;
+      }
+  
+      > a:hover,
+      > a:focus {
+        text-decoration: none;
+        background-color: darker(@select-fab-bg,10%);
+        .shadow(2);
+      }
+    }
+    
+      
+      
+    .disabled {
+      > a,
+      > a:hover,
+      > a:focus,
+      > span {
+        .shadow(0);
+        color: @pager-disabled-color;
+        background-color: @pager-bg;
+        cursor: @cursor-disabled;
+      }
+    }
+  }
+}
