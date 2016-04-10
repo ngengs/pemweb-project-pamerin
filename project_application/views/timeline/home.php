@@ -3,9 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div class="cards-column-full">
 	<?php if(!empty($error)){?>
+	<div class="row">
 		<div class="cards-column-full">
 			<div class="alert alert-danger"><?php echo $error;?></div>
 		</div>
+	</div>
 	<?php } ?>
 	<div class="cards-row timeline-masonry">
 <?php 
