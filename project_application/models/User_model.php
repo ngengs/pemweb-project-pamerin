@@ -9,7 +9,7 @@ class User_model extends CI_Model{
 		$this->load->database();
     }
 	
-	private function query_get_user($username=NULL){
+	private function query_get_user(){
 		$this->db->select('`user`.ID_USER,
 							`user`.USERNAME,
 							`user`.EMAIL,
@@ -23,7 +23,7 @@ class User_model extends CI_Model{
 	
 	public function check($username=NULL, $password=NULL)
 	{
-		$this->query_get_user($username);
+		$this->query_get_user();
 		if(!empty($username)){
 			$this->db->where('USERNAME',$username);
 		}
@@ -37,12 +37,34 @@ class User_model extends CI_Model{
 	
 	public function get_user($username=NULL,$search=FALSE, $page=NULL)
 	{
-		$this->query_get_user($username);
+		$this->query_get_user();
 		if(!empty($username)){
 			$this->db->where('USERNAME',$username);
 		}
 		if($search){
 			$this->db->or_like('LOWER(USERNAME)',strtolower($username));
+			$this->db->or_like('LOWER(FULL_NAME)',strtolower($username));
+		}
+		if(!empty($page)){
+			$per_post = $this->config->item('user_show');
+			$page_now = ($page - 1) * $per_post;
+			$this->db->offset($page_now);
+			$this->db->limit($per_post);
+		}
+		$result = $this->db->get();
+		return $result;
+	}
+	
+	public function get_user_count($username=NULL,$search=FALSE)
+	{
+		$this->db->select('COUNT(`user`.ID_USER) as COUNT');
+		$this->db->from('`user`');
+		if(!empty($username)){
+			$this->db->where('USERNAME',$username);
+		}
+		if($search){
+			$this->db->or_like('LOWER(USERNAME)',strtolower($username));
+			$this->db->or_like('LOWER(FULL_NAME)',strtolower($username));
 		}
 		$result = $this->db->get();
 		return $result;
