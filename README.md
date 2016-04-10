@@ -26,3 +26,18 @@ Project final praktikum pemrograman web
     ```
     grunt dist --force
     ```
+
+## Project Based
+- Backend:
+  - [Codeigniter 3.0.4](https://codeigniter.com/) For base PHP Framework
+- Frontend:
+  - [Bootstrap v3.3.6](http://getbootstrap.com) For base CSS and Javascript Framework
+  - [JQuery 1.12.1](http://jquery.com/) For javascript Framework
+  - [Moment](http://momentjs.com) For manipulating time with javascript
+  - [Bootstrap3-dialog](https://github.com/nakupanda/bootstrap3-dialog) For some modal dialog
+  - [Bootstrap File Input](http://plugins.krajee.com/file-input) For Input File
+  - [Imagesloaded](http://imagesloaded.desandro.com/) For manage action after image loaded
+  - [Masonry](http://masonry.desandro.com/) For listing cards in Timeline
+
+## License
+Code release under [Apache License 2.0](LICENSE)
