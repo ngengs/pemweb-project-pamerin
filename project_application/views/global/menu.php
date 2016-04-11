@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		      			<a href="<?php echo base_url($this->config->item('url_profile').$this->session->prjct_user->USERNAME); ?>" class="sidebar-header-user">
 		      				<div class="avatar">
 		      					<?php if(!empty($this->session->prjct_user->USER_PICTURE)){
-		      								$ava = base_url($this->session->prjct_user->USER_PICTURE);
+		      								$ava = base_url($this->config->item('media_path').'/'.$this->session->prjct_user->USERNAME.'/'.$this->config->item('media_avatar').'/'.$this->session->prjct_user->USER_PICTURE);
 		      						}else{
 		      							$ava = base_url('assets/img/profile.png');
 		      						}
