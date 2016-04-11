@@ -11,7 +11,6 @@ $config['web_image_size_minus'] = 10;
 $config['media_path'] = "media";
 $config['media_upload'] = "uploads";
 $config['media_avatar'] = "avatar";
-$config['media_avatar_name'] = "avatar_picture";
 
 $config['url_search_submit'] = 'search/search_submit/';
 $config['url_search_user'] = 'search/users/';
@@ -33,6 +32,8 @@ $config['url_report_post'] = 'post/submit_report';
 $config['url_follow'] = 'profile/follow_user';
 $config['url_unfollow'] = 'profile/unfollow_user';
 
+$config['url_settings_profile'] = 'settings/profile/';
+$config['url_settings_profile_submit'] = 'settings/profile_submit/';
 
 $config['timeline_post'] = 12;
 $config['user_show'] = 10;
