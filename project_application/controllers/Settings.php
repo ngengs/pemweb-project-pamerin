@@ -47,7 +47,7 @@ class Settings extends PRJCT_Controller {
 		}elseif (empty($email)) {
 			$this->session->set_flashdata('error_message','Email cant empty');
 		}elseif (!empty($password)) {
-			$regex_password = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/";
+			$regex_password = $this->config->item('regex_password');
 			if(!preg_match($regex_password, $password)){
 				$this->session->set_flashdata('error_message',"Passoword length minimal 8, contain lowercase, uppercase and number");
 			}

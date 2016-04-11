@@ -38,3 +38,6 @@ $config['url_settings_delete_user'] = 'settings/user_delete/';
 
 $config['timeline_post'] = 12;
 $config['user_show'] = 10;
+
+$config['regex_username'] = "/^[a-zA-Z0-9_]{3,15}$/";
+$config['regex_password'] = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/";

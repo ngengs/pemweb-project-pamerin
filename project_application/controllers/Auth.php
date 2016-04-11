@@ -77,8 +77,8 @@ class Auth extends CI_Controller {
 		$password = $this->input->post('password');
 		$password_retype = $this->input->post('password_retype');
 		if(!empty($username) &&!empty($email) && !empty($full_name) && !empty($password) && !empty($password_retype)){
-			$regex_username = "/^[a-zA-Z0-9_]{3,15}$/";
-			$regex_password = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/";
+			$regex_username = $this->config->item('regex_username');
+			$regex_password = $this->config->item('regex_password');
 			$error = false;
 			$error_message = "";
 			if(!preg_match($regex_username, $username)){
