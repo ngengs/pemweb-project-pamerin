@@ -185,7 +185,12 @@ $value=$post;
 							<form class="form" method="POST" action="<?php echo base_url('post/submit_comment');?>">
 								<div class="media">
 							      <a class="media-left media-top" href="#">
-							        <img class="img img-circle img-ava" src="<?php echo $ava;?>">
+							      	<?php 	$ava_form = base_url('assets/img/profile.png');
+											if(!empty($this->session->prjct_user->USER_PICTURE)){
+												$ava_form = base_url($this->config->item('media_path').'/'.$this->session->prjct_user->USERNAME.'/'.$this->config->item('media_avatar').'/'.$this->session->prjct_user->USER_PICTURE);
+											}
+									?>
+							        <img class="img img-circle img-ava" src="<?php echo $ava_form;?>">
 							      </a>
 							      <div class="media-body">
 							      	<textarea name="comment" class="form-control" required></textarea>
