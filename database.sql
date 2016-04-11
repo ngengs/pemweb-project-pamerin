@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `notifikasi`;
 CREATE TABLE `notifikasi` (
-  `ID_NOTIFIKASI` varchar(25) NOT NULL,
+  `ID_NOTIFIKASI` char(36) NOT NULL,
   `JUDUL` varchar(100) NOT NULL,
   `PESAN` text NOT NULL,
   PRIMARY KEY (`ID_NOTIFIKASI`)
@@ -31,9 +31,9 @@ CREATE TABLE `notifikasi` (
 -- ----------------------------
 DROP TABLE IF EXISTS `post`;
 CREATE TABLE `post` (
-  `ID_POST` varchar(25) NOT NULL,
+  `ID_POST` char(36) NOT NULL,
   `DATE_POST` datetime NOT NULL,
-  `ID_USER` varchar(25) NOT NULL,
+  `ID_USER` char(36) NOT NULL,
   `DESCRIPTION` text,
   `IS_AKTIF` smallint(6) NOT NULL,
   PRIMARY KEY (`ID_POST`),
@@ -46,9 +46,9 @@ CREATE TABLE `post` (
 -- ----------------------------
 DROP TABLE IF EXISTS `post_comment`;
 CREATE TABLE `post_comment` (
-  `ID_COMMENT` varchar(25) NOT NULL,
-  `ID_POST` varchar(25) NOT NULL,
-  `ID_USER` varchar(25) NOT NULL,
+  `ID_COMMENT` char(36) NOT NULL,
+  `ID_POST` char(36) NOT NULL,
+  `ID_USER` char(36) NOT NULL,
   `DATE_COMMENT` datetime NOT NULL,
   `COMMENT` text NOT NULL,
   `IS_AKTIF` smallint(6) NOT NULL,
@@ -64,8 +64,8 @@ CREATE TABLE `post_comment` (
 -- ----------------------------
 DROP TABLE IF EXISTS `post_like`;
 CREATE TABLE `post_like` (
-  `ID_POST` varchar(25) NOT NULL,
-  `ID_USER` varchar(25) NOT NULL,
+  `ID_POST` char(36) NOT NULL,
+  `ID_USER` char(36) NOT NULL,
   `IS_LIKE` smallint(6) NOT NULL,
   KEY `IXFK_POST_LIKE_POST` (`ID_POST`),
   KEY `IXFK_POST_LIKE_USER` (`ID_USER`),
@@ -78,7 +78,7 @@ CREATE TABLE `post_like` (
 -- ----------------------------
 DROP TABLE IF EXISTS `post_picture`;
 CREATE TABLE `post_picture` (
-  `ID_POST` varchar(25) NOT NULL,
+  `ID_POST` char(36) NOT NULL,
   `PATH` varchar(256) NOT NULL,
   KEY `IXFK_POST_PICTURE_POST` (`ID_POST`),
   CONSTRAINT `FK_POST_PICTURE_POST` FOREIGN KEY (`ID_POST`) REFERENCES `post` (`ID_POST`)
@@ -89,9 +89,9 @@ CREATE TABLE `post_picture` (
 -- ----------------------------
 DROP TABLE IF EXISTS `post_report`;
 CREATE TABLE `post_report` (
-  `ID_REPORT` varchar(25) NOT NULL,
-  `ID_POST` varchar(25) NOT NULL,
-  `ID_USER` varchar(25) NOT NULL,
+  `ID_REPORT` char(36) NOT NULL,
+  `ID_POST` char(36) NOT NULL,
+  `ID_USER` char(36) NOT NULL,
   `DATE_REPORT` datetime NOT NULL,
   `PESAN_REPORT` text,
   `IS_READ` smallint(6) NOT NULL,
@@ -107,7 +107,7 @@ CREATE TABLE `post_report` (
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `ID_USER` varchar(25) NOT NULL,
+  `ID_USER` char(36) NOT NULL,
   `USERNAME` varchar(25) NOT NULL,
   `EMAIL` varchar(256) NOT NULL,
   `PASSWORD` varchar(256) NOT NULL,
@@ -126,8 +126,8 @@ CREATE TABLE `user` (
 -- ----------------------------
 DROP TABLE IF EXISTS `user_follow`;
 CREATE TABLE `user_follow` (
-  `ID_USER` varchar(25) NOT NULL,
-  `ID_USER_FOLLOW` varchar(25) NOT NULL,
+  `ID_USER` char(36) NOT NULL,
+  `ID_USER_FOLLOW` char(36) NOT NULL,
   `FOLLOW_DATE` datetime NOT NULL,
   KEY `IXFK_USER_FOLLOW_USER` (`ID_USER`),
   KEY `IXFK_USER_FOLLOW_USER_02` (`ID_USER_FOLLOW`),
@@ -140,8 +140,8 @@ CREATE TABLE `user_follow` (
 -- ----------------------------
 DROP TABLE IF EXISTS `user_notifikasi`;
 CREATE TABLE `user_notifikasi` (
-  `ID_USER` varchar(25) NOT NULL,
-  `ID_NOTIFIKASI` varchar(25) NOT NULL,
+  `ID_USER` char(36) NOT NULL,
+  `ID_NOTIFIKASI` char(36) NOT NULL,
   `IS_READ` smallint(6) NOT NULL,
   KEY `IXFK_USER_NOTIFIKASI_NOTIFIKASI` (`ID_NOTIFIKASI`),
   KEY `IXFK_USER_NOTIFIKASI_USER` (`ID_USER`),
@@ -156,7 +156,7 @@ DROP FUNCTION IF EXISTS `GENERATEID`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` FUNCTION `GENERATEID`() RETURNS char(22) CHARSET latin1
 BEGIN	
-	RETURN concat(LEFT(UUID(), 8),concat(cast(microsecond(sysdate(6)) as char(6)),cast(DATE_FORMAT(NOW(), '%d%m%Y%H%i%s') as char(14))));
+	RETURN REPLACE(UUID(),'-','');
 END
 ;;
 DELIMITER ;
