@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<?php }
 							}else if($user->ID_USER==$this->session->prjct_user->ID_USER || $this->session->prjct_user->LEVEL==1){
 								?>
-								<a href="" class="btn btn-default"><span class="fa fa-cog"></span> Edit</a>
+								<a href="<?php echo base_url($this->config->item('url_settings_profile').$user->USERNAME);?>" class="btn btn-default"><span class="fa fa-cog"></span> Edit</a>
 							<?php if($user->ID_USER==$this->session->prjct_user->ID_USER){ ?>
 								<a href="" class="btn btn-warning"><span class="fa fa-bell"></span> Notifikasi</a>
 							<?php } ?>
@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div class="profile-count">
 							<ul class="profile-count-list list-unstyled list-inline">
 								<li>
-									<a href="">
+									<a href="<?php echo base_url($this->config->item('url_profile').$user->USERNAME);?>">
 										<span class="number number-change" data-origin="<?php echo $total_post;?>"><?php echo $total_post;?></span><span class="number-text">post</span>
 									</a>
 								</li>
