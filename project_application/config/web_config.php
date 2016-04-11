@@ -34,6 +34,7 @@ $config['url_unfollow'] = 'profile/unfollow_user';
 
 $config['url_settings_profile'] = 'settings/profile/';
 $config['url_settings_profile_submit'] = 'settings/profile_submit/';
+$config['url_settings_delete_user'] = 'settings/user_delete/';
 
 $config['timeline_post'] = 12;
 $config['user_show'] = 10;
