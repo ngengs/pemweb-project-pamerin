@@ -64,6 +64,17 @@ if(!empty($user)){
 						      <p class="help-block">Leave empty if not changed</p>
 							</div>
 						</div>
+						<?php if($this->session->prjct_user->LEVEL==1){ ?>
+						 <div class="form-group">
+						    <div class="col-sm-offset-2 col-sm-10">
+						      <div class="checkbox">
+						        <label>
+						          <input name="is_admin" type="checkbox" <?php if($value->LEVEL==1)echo 'checked';?>> Administrator
+						        </label>
+						      </div>
+						    </div>
+						  </div>
+						<?php } ?>
 					</div>
 					<footer class="cards-footer">
 						<div class="cards-footer-action">
