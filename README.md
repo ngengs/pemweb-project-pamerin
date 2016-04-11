@@ -2,7 +2,7 @@
 Project final praktikum pemrograman web
 
 ## USAGE
-- [Build](README.md#BUILD) the **assets file**
+- [Build](README.md#build) the **assets file**
 - Import the [databse.sql](database.sql) file to database 
 - Set [Database configuration](project_application/config/database.php)
 - Open the web and register the user
