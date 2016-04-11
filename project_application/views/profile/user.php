@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="profile-ava">
 						<?php 
 							$ava_user = base_url('assets/img/profile.png');
-							if(!empty($user->USER_PICTURE)) $ava_user=base_url($this->config->item('media_path').'/'.$value->USERNAME.'/'.$this->config->item('media_avatar').'/'.$value->USER_PICTURE);
+							if(!empty($user->USER_PICTURE)) $ava_user=base_url($this->config->item('media_path').'/'.$user->USERNAME.'/'.$this->config->item('media_avatar').'/'.$user->USER_PICTURE);
 						?>
 						<img src="<?php echo $ava_user;?>" class="img img-responsive img-responsive-center img-ava img-circle">
 					</div>
