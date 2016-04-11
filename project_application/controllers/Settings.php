@@ -74,8 +74,8 @@ class Settings extends PRJCT_Controller {
 				$this->load->helper('string');
 				$this->load->library('upload');
 				$count = count($files['image_upload']['name']);
-				$dir=realpath(APPPATH.'../'.$dirname);
-				if (!file_exists($dir))mkdir($dirname);
+				$dir=$dirname;
+				if (!file_exists($dir))mkdir($dir);
 				$dir .= '/'.$this->session->prjct_user->USERNAME;
 				if (!file_exists($dir))mkdir($dir);
 				$dir .= '/'.$this->config->item('media_avatar');;
@@ -84,6 +84,7 @@ class Settings extends PRJCT_Controller {
 					$this->load->helper('file');
 					delete_files($dir);
 				}
+				$dir = realpath($dir);
 				$config['upload_path'] = $dir."/";
 		        $config['allowed_types'] = 'jpg|png';
 				$config['file_ext_tolower'] = TRUE;

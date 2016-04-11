@@ -184,12 +184,13 @@ class Post extends PRJCT_Controller {
 			$this->load->helper('string');
 			$this->load->library('upload');
 			$count = count($files['image_upload']['name']);
-			$dir=realpath(APPPATH.'../'.$dirname);
-			if (!file_exists($dir))mkdir($dirname);
+			$dir=$dirname;
+			if (!file_exists($dir))mkdir($dir);
 			$dir .= '/'.$this->session->prjct_user->USERNAME;
 			if (!file_exists($dir))mkdir($dir);
 			$dir .= '/'.$this->config->item('media_upload');;
 			if (!file_exists($dir))mkdir($dir);
+			$dir = realpath($dir);
 			for($i = 0; $i<$count;$i++){				
 				$_FILES['image_upload']['name'] = $files['image_upload']['name'][$i];
                 $_FILES['image_upload']['type'] = $files['image_upload']['type'][$i];
