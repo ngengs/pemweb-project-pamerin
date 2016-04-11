@@ -90,6 +90,15 @@ class User_model extends CI_Model{
 		return $result;
 	}
 	
+	public function update_user($id=NULL, $data=array())
+	{
+		$this->db->set($data);
+		if(!empty($id)){
+			$this->db->where('id_user',$id);
+		}
+		$result = $this->db->update('`user`');
+	}
+	
 	public function get_following($id_user,$just_id=FALSE, $is_aktif=1, $page=NULL)
 	{
 		$query = "";
