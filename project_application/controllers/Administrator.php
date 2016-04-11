@@ -27,6 +27,7 @@ class Administrator extends PRJCT_Controller {
 		$this->data['user'] = $list_user->result();
 		$this->data['url_pagination'] = $this->config->item('url_admin_user');
 		$this->data['page_total'] = $page_total;
+		$this->data['menu']=98;
 		$this->load->view('global/header',$this->data);
 		$this->load->view('administrator/list_user',$this->data);
 		$this->load->view('global/footer',$this->data);

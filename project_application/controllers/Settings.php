@@ -20,6 +20,8 @@ class Settings extends PRJCT_Controller {
 					$user = $user[0];
 					$this->data['title'] = "Setting Profile @".$username;
 					$this->data['user'] = $user;
+					if($user->ID_USER==$this->session->prjct_user->ID_USER)
+						$this->data['menu']=99;
 					$this->load->view('global/header',$this->data);
 					$this->load->view('settings/profile',$this->data);
 					$this->load->view('global/footer',$this->data);
