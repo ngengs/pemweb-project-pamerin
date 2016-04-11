@@ -111,5 +111,18 @@ class Settings extends PRJCT_Controller {
 		}
 		redirect($this->config->item('url_settings_profile').$username);
 	}
+
+	public function user_delete($id=NULL,$username=NULL)
+	{
+		if(!empty($id) && !empty($username)){
+			$this->load->model('user_model');
+			$data=array('is_aktif'=>0);
+			$this->user_model->update_user($id,$data,$username);
+			if($this->session->prjct_user->ID_USER == $id){
+				redirect('auth/signout');
+			}
+		}
+		redirect('');
+	}
 	
 }
