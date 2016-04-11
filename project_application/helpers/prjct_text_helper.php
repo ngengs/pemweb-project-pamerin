@@ -10,3 +10,20 @@ if ( ! function_exists('prjct_text_generate_html'))
 		return nl2br($desc);
     }   
 }
+
+if ( ! function_exists('prjct_print_username')) {
+	function prjct_print_username($user = NULL, $inverse = TRUE)
+	{
+		$string = '';
+		if (!empty($user)) {
+			$string = "@".$user->USERNAME;
+			if(!empty($user->LEVEL) && $user->LEVEL==1){
+				if($inverse)
+					$string .= ' <span class="admin-icon fa-stack fa-sm"><i class="fa fa-certificate fa-stack-2x"></i><i class="fa fa-check fa-stack-1x fa-inverse"></i></span>';
+				else
+					$string .= ' <span class="admin-icon fa-stack fa-sm"><i class="fa fa-certificate fa-stack-2x"></i><i class="fa fa-check fa-stack-1x fa-inverse fa-inverse-other"></i></span>';
+			}
+		}
+		echo $string;
+	}
+}
