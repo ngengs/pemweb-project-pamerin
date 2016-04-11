@@ -49,6 +49,7 @@ class Post_model extends CI_Model{
 			`user`.USERNAME,
 			`user`.USER_PICTURE,
 			`user`.IS_AKTIF AS USER_IS_AKTIF,
+			`user`.LEVEL,
 			post_like.IS_LIKE as MY_LIKE";
 		$this->db->select($query);
 		$this->db->join('`user`','`user` ON post.ID_USER = `user`.ID_USER');
