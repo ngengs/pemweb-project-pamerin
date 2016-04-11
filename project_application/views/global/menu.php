@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		      				</div>
 		      				<div class="detail">
 		      					<div class="fullname"><?php echo $this->session->prjct_user->FULL_NAME;?></div>
-		      					<div class="username">@<?php echo $this->session->prjct_user->USERNAME;?></div>
+		      					<div class="username"><?php prjct_print_username($this->session->prjct_user,FALSE);?></div>
 		      				</div>
 		      			</a>
 		      		</div>

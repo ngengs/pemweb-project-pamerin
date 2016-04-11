@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								    </div>
 								    <div class="media-body">
 								    	<div class="media-heading">
-								    		<a href="<?php echo $user_link;?>" class="list-title">@<?php echo $value->USERNAME;?></a>
+								    		<a href="<?php echo $user_link;?>" class="list-title"><?php prjct_print_username($value);?></a>
 								    		<div class="list-title-small"><?php echo $value->FULL_NAME;?> (<?php if($value->IS_AKTIF==1)echo "Active";else echo "Deleted";?>)</div>
 								    	</div>
 								    	<p class="list-detail-box">

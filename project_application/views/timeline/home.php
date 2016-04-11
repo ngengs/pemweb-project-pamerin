@@ -27,7 +27,7 @@ foreach ($post as $key => $value) {
 						</a>
 						<div class="cards-header-username">
 							<a href="<?php echo $profile_link;?>" class="cards-header-link-profile">
-								@<?php echo $value->USERNAME;?>
+								<?php prjct_print_username($value);?>
 							</a>
 						</div>
 						<div class="cards-header-tools">

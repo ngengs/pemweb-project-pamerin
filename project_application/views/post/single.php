@@ -28,7 +28,7 @@ $value=$post;
 						</a>
 						<div class="cards-header-username">
 							<a href="<?php echo $profile_link;?>" class="cards-header-link-profile">
-								@<?php echo $value->USERNAME;?>
+								<?php prjct_print_username($value);?>
 							</a>
 						</div>
 						<div class="cards-header-tools">
@@ -144,7 +144,7 @@ $value=$post;
 								    </div>
 								    <div class="media-body">
 								    	<div class="media-heading">
-								    		<a href="<?php echo $comment_profile_link;?>">@<?php echo $value_com->USERNAME;?></a>
+								    		<a href="<?php echo $comment_profile_link;?>"><?php prjct_print_username($value_com);?></a>
 								    	</div>
 								    	<p class="comment-box">
 								    		<?php if(!empty($value_com->COMMENT)){

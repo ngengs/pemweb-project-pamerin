@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 					<div class="profile-box">
 						<h2 class="profile-full-name"><?php echo $user->FULL_NAME;?></h2>
-						<h4 class="profile-username">@<?php echo $user->USERNAME;?></h4>
+						<h4 class="profile-username"><?php prjct_print_username($user);?></h4>
 						<p class="profile-description">
 							<?php if(!empty($user->DESCRIPTION)){
 								echo prjct_text_generate_html($user->DESCRIPTION);
@@ -89,7 +89,7 @@ foreach ($post as $key => $value) {
 						</a>
 						<div class="cards-header-username">
 							<a href="<?php echo $profile_link;?>" class="cards-header-link-profile">
-								@<?php echo $value->USERNAME;?>
+								<?php prjct_print_username($value);?>
 							</a>
 						</div>
 						<div class="cards-header-tools">
