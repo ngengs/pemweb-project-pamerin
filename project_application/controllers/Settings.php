@@ -67,7 +67,7 @@ class Settings extends PRJCT_Controller {
 			}
 			$files = $_FILES;
 			$dirname = $this->config->item('media_path');
-			if(!empty($files)){
+			if(!empty($files['image_upload']['name'])){
 				$this->load->helper('string');
 				$this->load->library('upload');
 				$count = count($files['image_upload']['name']);
