@@ -90,11 +90,14 @@ class User_model extends CI_Model{
 		return $result;
 	}
 	
-	public function update_user($id=NULL, $data=array())
+	public function update_user($id=NULL, $data=array(), $username=NULL)
 	{
 		$this->db->set($data);
 		if(!empty($id)){
 			$this->db->where('id_user',$id);
+		}
+		if(!empty($username)){
+			$this->db->where('username',$username);
 		}
 		$result = $this->db->update('`user`');
 	}
