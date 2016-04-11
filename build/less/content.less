@@ -164,6 +164,35 @@ html,body{
         &.cards-body-padding{
           padding:@select-cards-padding;
         }
+        
+        .upload-avatar{
+          margin-bottom:@padding-default;
+          .file-preview,.file-preview:hover,
+          .file-preview-frame,.file-preview-frame:hover {
+            margin: 0;
+            padding: 0;
+            border: none;
+            box-shadow: none;
+            text-align: center;
+          }
+          .file-preview-frame, .file-preview-image, .file-preview-other{
+            display:block;
+            height:auto;
+            float:none;
+          }
+          
+          .file-preview-image{
+            .img-circle;
+            .img-responsive;
+            .img-responsive-center;
+          }
+          .img-ava,.file-preview-image{
+            height:(@select-cards-ava-size * 3)!important;
+            width:(@select-cards-ava-size * 3)!important;
+            margin-bottom:@padding-default;
+          }
+        }
+        
         >.cards-body-content{
           padding:@select-cards-padding;
           overflow-wrap: break-word;
