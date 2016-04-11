@@ -42,6 +42,7 @@ class Settings extends PRJCT_Controller {
 		$password_retype = $this->input->post('password_retype');
 		$id = $this->input->post('id');
 		$username = $this->input->post('username');
+		$is_admin = $this->input->post('is_admin');
 		if(empty($full_name)){
 			$this->session->set_flashdata('error_message','Fullname cant empty');
 		}elseif (empty($email)) {
@@ -106,8 +107,20 @@ class Settings extends PRJCT_Controller {
 					$data['user_picture'] = $data_img['file_name'];
                 }
 			}
+			if($this->session->prjct_user->LEVEL==1){
+				$level = 2;
+				if(!empty($is_admin)) $level = 1;
+				$data['level']=$level;
+			}
 			$this->load->model('user_model');
 			$result = $this->user_model->update_user($id,$data);
+			if($result && $this->session->prjct_user->ID_USER == $id){
+				$result_user = $this->user_model->check($this->session->prjct_user->USERNAME);
+				if(!empty($result_user->result())){
+					$value = $result_user->result();
+					$this->session->set_userdata(array('prjct_user'=>$value[0]));
+				}
+			}
 		}
 		redirect($this->config->item('url_settings_profile').$username);
 	}
