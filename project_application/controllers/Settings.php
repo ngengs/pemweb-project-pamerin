@@ -125,4 +125,13 @@ class Settings extends PRJCT_Controller {
 		redirect('');
 	}
 	
+	public function user_activate($id=NULL,$username=NULL)
+	{
+		if(!empty($id) && !empty($username) && $this->session->prjct_user->LEVEL==1){
+			$this->load->model('user_model');
+			$data=array('is_aktif'=>1);
+			$this->user_model->update_user($id,$data,$username);
+		}
+		redirect('');
+	}
 }
