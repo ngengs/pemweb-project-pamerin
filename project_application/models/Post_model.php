@@ -159,7 +159,8 @@ class Post_model extends CI_Model{
 							post_comment.`COMMENT`,
 							post_comment.IS_AKTIF,
 							`user`.USERNAME,
-							`user`.USER_PICTURE');
+							`user`.USER_PICTURE,
+							`user`.LEVEL');
 		$this->db->from('post_comment');
 		$this->db->join('`user`','post_comment.ID_USER = `user`.ID_USER');
 		$this->db->where('post_comment.ID_POST',$id_post);
