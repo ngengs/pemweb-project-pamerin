@@ -100,6 +100,7 @@ class User_model extends CI_Model{
 			$this->db->where('username',$username);
 		}
 		$result = $this->db->update('`user`');
+		return $result;
 	}
 	
 	public function get_following($id_user,$just_id=FALSE, $is_aktif=1, $page=NULL)
