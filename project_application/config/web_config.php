@@ -37,6 +37,8 @@ $config['url_settings_profile_submit'] = 'settings/profile_submit/';
 $config['url_settings_delete_user'] = 'settings/user_delete/';
 $config['url_settings_activate_user'] = 'settings/user_activate/';
 
+$config['url_admin_user'] = 'administrator/manage_user/';
+
 $config['timeline_post'] = 12;
 $config['user_show'] = 10;
 
