@@ -187,6 +187,58 @@ $(document).ready(function(){
 		});
 	}
 	
+	
+	
+	if($('#avatar-upload').length){
+	    var $avatar_before = $('#avatar-upload').data('avatarBefore');
+		$("#avatar-upload").fileinput({
+		    overwriteInitial: true,
+		    maxFileSize: 1500,
+		    showClose: false,
+		    showCaption: false,
+		    browseLabel: '',
+		    removeLabel: '',
+		    resizeImage: true,
+		    maxImageWidth: 200,
+		    maxImageHeight: 200,
+		    resizePreference: 'width',
+		    browseIcon: '<i class="fa fa-folder-open"></i>',
+		    removeIcon: '<i class="fa fa-remove"></i>',
+		    removeTitle: 'Cancel or reset changes',
+		    elErrorContainer: '#upload-avatar-errors',
+		    msgErrorClass: 'alert alert-block alert-danger',
+		    defaultPreviewContent: '<img src="'+$avatar_before+'" alt="Your Avatar" class="img img-responsive img-responsive-center img-circle img-ava">',
+		    layoutTemplates: {main2: '{preview} {remove} {browse}'},
+		    allowedFileExtensions: ["jpg", "png"]
+		});
+	}
+	
+	if($('.delete-user').length){
+		$('.delete-user').click(function(e){
+			e.preventDefault();
+			var $href = $(this).data('href');
+			var $username = $(this).data('username');
+			BootstrapDialog.show({
+				type: BootstrapDialog.TYPE_DANGER,
+	            title: 'Warning',
+	            message: 'Are you sure want delete user @'+$username+'?',
+	            buttons: [{
+	                label: 'Cancel',
+	                action: function(dialog) {
+	                    dialog.close();
+	                }
+	            }, {
+	                label: 'Yes',
+	                icon: 'fa fa-trash',
+	                cssClass: 'btn-danger',
+	                action: function(dialog) {
+	                    location.href=$href;
+	                }
+	            }]
+	        });
+		});
+	}
+	
 	if($('.img-popup').length){
 		
 	}
