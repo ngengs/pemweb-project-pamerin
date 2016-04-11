@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	        	<!-- Admin Menu -->
 		        <li <?php if(!empty($menu) && $menu==98) echo "class='active'";?>><a href="#"><span class="fa fa-users fa-fw"></span><span class="menu-text">List User</span></a></li>
 		        <?php } ?>
-		        <li <?php if(!empty($menu) && $menu==99) echo "class='active'";?>><a href="#"><span class="fa fa-cog fa-fw"></span><span class="menu-text">Setting</span></a></li>
+		        <li <?php if(!empty($menu) && $menu==99) echo "class='active'";?>><a href="<?php echo base_url($this->config->item('url_settings_profile').$this->session->prjct_user->USERNAME);?>"><span class="fa fa-cog fa-fw"></span><span class="menu-text">Setting</span></a></li>
 		        
 		        <li><a href="<?php echo base_url('auth/signout');?>"><span class="fa fa-power-off fa-fw text-danger"></span><span class="menu-text">Sign Out</span></a></li>
 		        
