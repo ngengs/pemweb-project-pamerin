@@ -32,7 +32,7 @@ $value=$post;
 							</a>
 						</div>
 						<div class="cards-header-tools">
-							<a href="<?php echo base_url($this->config->item('url_single_post').'/'.$value->ID_POST);?>" class="cards-header-tool-time"><time class="formated-time" datetime="<?php echo $value->DATE_POST;?>"><?php echo $value->DATE_POST;?></time></a>
+							<a href="<?php echo base_url($this->config->item('url_single_post').'/'.$value->USERNAME.'/'.$value->ID_POST);?>" class="cards-header-tool-time"><time class="formated-time" datetime="<?php echo $value->DATE_POST;?>"><?php echo $value->DATE_POST;?></time></a>
 							<div class="dropdown">
 							  <button class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							    <span class="fa fa-ellipsis-v"></span>
