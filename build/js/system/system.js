@@ -238,6 +238,31 @@ $(document).ready(function(){
 	        });
 		});
 	}
+	if($('.activate-user').length){
+		$('.activate-user').click(function(e){
+			e.preventDefault();
+			var $href = $(this).data('href');
+			var $username = $(this).data('username');
+			BootstrapDialog.show({
+				type: BootstrapDialog.TYPE_SUCCESS,
+	            title: 'Warning',
+	            message: 'Are you sure want activate user @'+$username+'?',
+	            buttons: [{
+	                label: 'Cancel',
+	                action: function(dialog) {
+	                    dialog.close();
+	                }
+	            }, {
+	                label: 'Yes',
+	                icon: 'fa fa-check',
+	                cssClass: 'btn-success',
+	                action: function(dialog) {
+	                    location.href=$href;
+	                }
+	            }]
+	        });
+		});
+	}
 	
 	if($('.img-popup').length){
 		

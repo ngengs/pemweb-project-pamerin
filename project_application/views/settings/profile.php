@@ -71,7 +71,7 @@ if(!empty($user)){
 								<?php if($value->IS_AKTIF==1) { ?>
 									<button data-href="<?php echo base_url($this->config->item('url_settings_delete_user').$value->ID_USER.'/'.$value->USERNAME);?>" data-username="<?php echo $value->USERNAME;?>" class="btn btn-danger delete-user"><span class="fa fa-ban"></span> Delete User</button>
 								<?php } elseif ($value->IS_AKTIF==0 && $this->session->prjct_user->LEVEL==1) { ?>
-									<button data-href="" class="btn btn-success link-script"><span class="fa fa-check"></span> Activate User</button>
+									<button data-href="<?php echo base_url($this->config->item('url_settings_activate_user').$value->ID_USER.'/'.$value->USERNAME);?>" data-username="<?php echo $value->USERNAME;?>" class="btn btn-success activate-user"><span class="fa fa-check"></span> Activate User</button>
 								<?php } ?>
 							</div>
 							<div class="action-right">
