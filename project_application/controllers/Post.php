@@ -144,9 +144,27 @@ class Post extends PRJCT_Controller {
 			if($this->session->prjct_user->LEVEL==1){
 				$id_user=NULL;
 			}
-			$result = $this->post_model->delete_post($id_post,$id_user);
-			if(empty($result)){
-				$this->session->set_flashdata('error_message', 'Failed Delete Post');
+			if(!$this->config->item('purge_delete_post')){
+				$result = $this->post_model->delete_post($id_post,$id_user);
+				if(empty($result)){
+					$this->session->set_flashdata('error_message', 'Failed Delete Post');
+				}
+			}else{
+				$post = $this->post_model->get_single_post(NULL,$id_post,$id_user,FALSE,FALSE);
+				$post = $post[0];
+				/**
+				 * Delete all photo
+				 */
+				$photo = $post->PHOTOS;
+				$dir_user = $this->config->item('media_path').'/'.$this->session->prjct_user->USERNAME;
+				$dir_upload = $dir_user.'/'.$this->config->item('media_upload');
+				foreach ($photo as $key => $value) {
+					unlink($dir_upload.'/'.$value);
+				}
+				/**
+				 * Purge Delet Post
+				 */
+				 $this->post_model->purge_delete_post($id_post,$id_user);
 			}
 		}
 		redirect('');
@@ -188,7 +206,7 @@ class Post extends PRJCT_Controller {
 			if (!file_exists($dir))mkdir($dir);
 			$dir .= '/'.$this->session->prjct_user->USERNAME;
 			if (!file_exists($dir))mkdir($dir);
-			$dir .= '/'.$this->config->item('media_upload');;
+			$dir .= '/'.$this->config->item('media_upload');
 			if (!file_exists($dir))mkdir($dir);
 			$dir = realpath($dir);
 			for($i = 0; $i<$count;$i++){				
