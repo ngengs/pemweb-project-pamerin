@@ -4,6 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['web_name'] = "Pamerin";
 $config['web_logo'] = null;
 
+/**
+ * If purge_delete_post set TRUE it will permanent delete
+ * from table and delete file
+ * If set FALSE it will just set flag from table post
+ * Recommend using FALSE
+ */
+$config['purge_delete_post'] = FALSE;
 
 $config['web_image_quality'] = "75%";
 $config['web_image_size_minus'] = 10;
