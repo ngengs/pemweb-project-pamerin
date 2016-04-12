@@ -67,7 +67,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
     <!-- FAB -->
     <div class="fab">
-    	<a href="#" class="fab-btn" data-toggle="modal" data-target="#modal-post"><span class="fa fa-plus fa-fw"></span></a>
+    	<a href="#" class="fab-btn fab-yellow" data-toggle="modal" data-target="#modal-post"><span class="fa fa-plus fa-fw"></span></a>
+   		<?php if($this->session->prjct_user->LEVEL==1){ ?>
+   		<a href="#" class="fab-btn fab-red fab-btn-sm" data-toggle="modal" data-target="#modal-post"><span class="fa fa-share-alt fa-fw"></span></a>
+    	<?php } ?>
     </div>
     <!-- End FAB -->
     
@@ -88,6 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?php echo base_url();?>assets/plugins/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="<?php echo base_url();?>assets/plugins/masonry/masonry.pkgd.min.js"></script>
     <script src="<?php echo base_url();?>assets/plugins/bootstrap-dialog/bootstrap-dialog.min.js"></script>
+    <script src="<?php echo base_url();?>assets/plugins/select2/js/select2.full.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/system.min.js"></script>
   </body>
 </html>
