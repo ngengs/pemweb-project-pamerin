@@ -237,6 +237,39 @@ html,body{
               }
             }
           }
+          &.card-list-default{
+            >ul{
+              >li{
+                padding:0;
+                >a{
+                  display:block;
+                  padding:@padding-default;
+                  .list-title{
+                    
+                  }
+                  .list-small{
+                    color:@select-color-muted;
+                    font-size:@font-size-small;
+                  }
+                  &:hover,&:focus{
+                    background-color:rgba(0,0,0,.05);
+                    text-decoration:none;
+                    .list-title{
+                      text-decoration:underline;
+                    }
+                  }
+                  &.list-muted{
+                    background-color:rgba(0,0,0,.02);
+                    .list-title{
+                      color:@color-text;
+                      font-weight:100;
+                      font-style:italic;
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
       >footer{

@@ -10,9 +10,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title><?php if(!empty($title)) echo $title.' | ';?><?php echo $this->config->item('web_name');?></title>
 
+    <link href="<?php echo base_url();?>assets/plugins/fileupload/css/fileinput.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/plugins/select2/css/select2.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>assets/css/pemweb_project.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/plugins/fileupload/css/fileinput.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

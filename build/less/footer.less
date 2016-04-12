@@ -3,8 +3,8 @@ footer#footer{
 }
 .fab{
   >.fab-btn{
-    background-color:@select-fab-bg;
-    color:@select-fab-cl;
+    background-color:@color-primary;
+    color:@color-text;
     position:fixed;
     bottom:16px;
     right:16px;
@@ -22,9 +22,46 @@ footer#footer{
     .transition(@transition);
     .shadow(2);
     &:hover,&:focus{
+      background-color:@color-primary-dark;
       text-decoration:none;
-      bakcground-color:@select-fab-bg-dark;
       .shadow(3);
+    }
+    & + .fab-btn{
+      bottom:20px;
+      z-index:(@zindex-navbar + 35);
+      &.fab-btn-sm{
+        right:22px;
+      }
+    }
+    
+    &.fab-btn-sm{
+      width:36px;
+      height:36px;
+      line-height: 36px;
+      font-size:14px;
+    }
+    
+    &.fab-yellow{
+      background-color:@select-fab-bg;
+      color:@select-fab-cl;
+      &:hover,&:focus{
+       background-color:@select-fab-bg-dark;
+      }
+    }
+    &.fab-red{
+      background-color:@select-fab-second-bg;
+      color:@select-fab-second-cl;
+      &:hover,&:focus{
+       background-color:@select-fab-second-bg-dark;
+      }
+    }
+  }
+  &:hover,&:focus{
+    >.fab-btn{
+      & + .fab-btn{
+        z-index:(@zindex-navbar + 40);
+        bottom:(16px + 48px + @padding-small - 2px);
+      }
     }
   }
 }

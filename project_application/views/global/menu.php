@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		        	<!-- Admin Menu -->
 		        	
 			        <li class="link-badge notification">
-			        	<a href="#">
+			        	<a href="<?php echo base_url($this->config->item('url_admin_report'));?>">
 			        		<span class="fa fa-bug icon"></span><span class="badge badge-danger"><?php if(!empty($report_count))echo $report_count;?></span><span class="text">Report</span></a>
 			        </li>
 		        <?php } ?>
