@@ -45,9 +45,12 @@ $config['url_settings_delete_user'] = 'settings/user_delete/';
 $config['url_settings_activate_user'] = 'settings/user_activate/';
 
 $config['url_admin_user'] = 'administrator/manage_user/';
+$config['url_admin_report'] = 'administrator/manage_report/';
+$config['url_admin_report_view'] = 'administrator/view_report/';
 
 $config['timeline_post'] = 12;
 $config['user_show'] = 10;
+$config['list_show'] = 10;
 
 $config['regex_username'] = "/^[a-zA-Z0-9_]{3,15}$/";
 $config['regex_password'] = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/";
