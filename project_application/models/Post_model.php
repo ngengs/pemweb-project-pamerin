@@ -49,11 +49,13 @@ class Post_model extends CI_Model{
 			`user`.USERNAME,
 			`user`.USER_PICTURE,
 			`user`.IS_AKTIF AS USER_IS_AKTIF,
-			`user`.LEVEL,
-			post_like.IS_LIKE as MY_LIKE";
-		$this->db->select($query);
+			`user`.LEVEL";
 		$this->db->join('`user`','`user` ON post.ID_USER = `user`.ID_USER');
-		$this->db->join('`post_like`','post_like.ID_POST = post.ID_POST AND post_like.ID_USER = '.$this->db->escape($id_user),'left outer');
+		if(!empty($id_user)){
+			$query .=',post_like.IS_LIKE as MY_LIKE';
+			$this->db->join('`post_like`','post_like.ID_POST = post.ID_POST AND post_like.ID_USER = '.$this->db->escape($id_user),'left outer');
+		}
+		$this->db->select($query);
 		$this->db->from('post');
 		if(!empty($id_following)){
 			$this->db->where_in('post.ID_USER', $id_following);
@@ -110,10 +112,12 @@ class Post_model extends CI_Model{
 		return $this->db->count_all_results();
 	}
 	
-	public function get_single_post($username,$id_post,$id_user){
+	public function get_single_post($username=NULL,$id_post=NULL,$id_user,$with_like=TRUE,$with_comment=TRUE){
 		$this->generate_get_timeline_query($id_user);
 		$this->db->where('post.ID_POST',$id_post);
-		$this->db->where('`user`.USERNAME',$username);
+		if(!empty($username)){
+			$this->db->where('`user`.USERNAME',$username);
+		}
 		$post = $this->db->get();
 		$return=array();
 		if(!empty($post->result())){
@@ -124,27 +128,32 @@ class Post_model extends CI_Model{
 				foreach ($temp_photos as $key_photos => $value_photos) {
 					$photos[]=$value_photos->PATH;
 				}
-				$comment = 0;
-				$temp_comment = $this->count_comment($value->ID_POST);
-				if(!empty($temp_comment)){
-					$comment = $temp_comment[0]->COUNT;
-				}
-				$like = 0;
-				$temp_like = $this->count_like($value->ID_POST);
-				if(!empty($temp_like)){
-					$like = $temp_like[0]->COUNT;
-				}
-				$temp_list_comment = $this->get_comment($value->ID_POST);
-				$list_comment = array();
-				if(!empty($temp_list_comment->result())){
-					$temp_list = $temp_list_comment->result();
-					foreach($temp_list as $key_com => $val_com){
-						$list_comment[] = $val_com;
+				if($with_comment){
+					$comment = 0;
+					$temp_comment = $this->count_comment($value->ID_POST);
+					if(!empty($temp_comment)){
+						$comment = $temp_comment[0]->COUNT;
 					}
+					
+					$temp_list_comment = $this->get_comment($value->ID_POST);
+					$list_comment = array();
+					if(!empty($temp_list_comment->result())){
+						$temp_list = $temp_list_comment->result();
+						foreach($temp_list as $key_com => $val_com){
+							$list_comment[] = $val_com;
+						}
+					}
+					$value->COMMENT_LIST = $list_comment;
+					$value->COMMENT_COUNT = $comment;
 				}
-				$value->COMMENT_LIST = $list_comment;
-				$value->LIKE_COUNT = $like;
-				$value->COMMENT_COUNT = $comment;
+				if($with_like){
+					$like = 0;
+					$temp_like = $this->count_like($value->ID_POST);
+					if(!empty($temp_like)){
+						$like = $temp_like[0]->COUNT;
+					}
+					$value->LIKE_COUNT = $like;
+				}
 				$value->PHOTOS = $photos;
 				$return[]=$value;
 			}
@@ -244,6 +253,33 @@ class Post_model extends CI_Model{
 		}
 		$result = $this->db->update('post');
 		return $result;
+	}
+	
+	public function purge_delete_post($id_post,$id_user=NULL)
+	{
+		/**
+		 * Delete post relation
+		 * 1. Post comment
+		 * 2. Post like
+		 * 3. Post report
+		 * 4. Post Picture
+		 */
+		$this->db->where('ID_POST',$id_post);
+		$this->db->delete('post_comment');
+		$this->db->where('ID_POST',$id_post);
+		$this->db->delete('post_like');
+		$this->db->where('ID_POST',$id_post);
+		$this->db->delete('post_report');
+		$this->db->where('ID_POST',$id_post);
+		$this->db->delete('post_picture');
+		/**
+		 * Delete Post
+		 */
+		$this->db->where('ID_POST',$id_post);
+		if(!empty($id_user)){
+			$this->db->where('ID_USER',$id_user);
+		}
+		$this->db->delete('post');
 	}
 
 	public function create_comment($id_post,$id_user,$comment,$is_aktif=1){
