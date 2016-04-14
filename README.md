@@ -12,7 +12,7 @@ Project final praktikum pemrograman web
     Or if you use github desktop froo windows click [this](github-windows://openRepo/https://github.com/ngengs/pemweb-project-pamerin)
 - Normal Download
   - [Download](https://github.com/ngengs/pemweb-project-pamerin/archive/master.zip) full master branch as ZIP
-  - Or Check the release tab
+  - Or Check the [Release](https://github.com/ngengs/pemweb-project-pamerin/releases) tab
   - Unpack the zip to your server direcotry ```xampp\htdocs``` for example
 
 ## USAGE
