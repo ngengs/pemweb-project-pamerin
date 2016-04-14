@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			        </li>
 		        <?php } ?>
 		        <li class="link-badge notification">
-		        	<a href="#">
+		        	<a href="<?php echo base_url($this->config->item('url_notification_list'));?>">
 		        		<span class="fa fa-bell icon"></span><span class="badge badge-danger"><?php if(!empty($notif_count))echo $notif_count;?></span><span class="text">Notification</span></a>
 		        </li>
 		      </ul>

@@ -69,7 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="fab">
     	<a href="#" class="fab-btn fab-yellow" data-toggle="modal" data-target="#modal-post"><span class="fa fa-plus fa-fw"></span></a>
    		<?php if($this->session->prjct_user->LEVEL==1){ ?>
-   		<a href="#" class="fab-btn fab-red fab-btn-sm" data-toggle="modal" data-target="#modal-post"><span class="fa fa-share-alt fa-fw"></span></a>
+   		<a href="#" data-href="<?php echo base_url($this->config->item('url_admin_notification_create'));?>" class="link-script fab-btn fab-red fab-btn-sm"><span class="fa fa-share-alt fa-fw"></span></a>
     	<?php } ?>
     </div>
     <!-- End FAB -->
