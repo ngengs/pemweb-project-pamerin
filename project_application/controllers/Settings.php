@@ -45,6 +45,7 @@ class Settings extends PRJCT_Controller {
 		$id = $this->input->post('id');
 		$username = $this->input->post('username');
 		$is_admin = $this->input->post('is_admin');
+		$description = $this->input->post('description');
 		if(empty($full_name)){
 			$this->session->set_flashdata('error_message','Fullname cant empty');
 		}elseif (empty($email)) {
@@ -61,9 +62,11 @@ class Settings extends PRJCT_Controller {
 		}
 		
 		if(!empty($id)){
+			if($description=='')$description=NULL;
 			$data = array(	
 							'full_name' => $full_name,
-							'email' => $email
+							'email' => $email,
+							'description' => $description
 							 );
 			if(!empty($password)){
 				$data['password'] = md5($password);
