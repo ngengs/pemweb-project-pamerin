@@ -77,4 +77,42 @@ class Administrator extends PRJCT_Controller {
 			}
 		}
 	}
+	
+	public function notification_create($id_user=NULL)
+	{
+		$this->load->model('user_model');
+		$list_user = $this->user_model->get_user();
+		$this->data['user']=$list_user->result();
+		
+		if(!empty($id_user))$this->data['single']=$id_user;
+		$this->data['title']="Create Notification";
+		$this->load->view('global/header',$this->data);
+		$this->load->view('administrator/notification_create',$this->data);
+		$this->load->view('global/footer',$this->data);
+	}
+	
+	public function notification_submit()
+	{
+		$title = $this->input->post('title');
+		$message = $this->input->post('message');
+		$user = $this->input->post('user');
+		$id = $this->global_model->generateid();
+		$data = array(
+			'id_notifikasi'=>$id,
+			'judul' => $title,
+			'pesan' => $message,
+			'date_notifikasi'=>date("Y-m-d H:i:s")
+		);
+		$data_user=array();
+		foreach ($user as $key => $value) {
+			$data_user[]=array(
+								'id_notifikasi'=>$id,
+								'id_user'=>$value,
+								'is_read'=>0
+								);
+		}
+		$this->load->model('notifikasi_model');
+		$this->notifikasi_model->insert_notif($data,$data_user);
+		redirect('');
+	}
 }
