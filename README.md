@@ -1,6 +1,20 @@
 # PAMERIN
 Project final praktikum pemrograman web
 
+## DOWNLOAD
+- Git
+  - You must have git in your system, if dont have you can download [here](https://git-scm.com/download/) or [here](https://desktop.github.com/)
+  - Clone this repository
+   
+    ```
+    git clone https://github.com/ngengs/pemweb-project-pamerin.git
+    ```
+    Or if you use github desktop froo windows click [this](github-windows://openRepo/https://github.com/ngengs/pemweb-project-pamerin)
+- Normal Download
+  - [Download](https://github.com/ngengs/pemweb-project-pamerin/archive/master.zip) full master branch as ZIP
+  - Or Check the release tab
+  - Unpack the zip to your server direcotry ```xampp\htdocs``` for example
+
 ## USAGE
 - [Build](README.md#build) the **assets file**
 - Import the [databse.sql](database.sql) file to database 
@@ -38,6 +52,7 @@ Project final praktikum pemrograman web
   - [Bootstrap File Input](http://plugins.krajee.com/file-input) For Input File
   - [Imagesloaded](http://imagesloaded.desandro.com/) For manage action after image loaded
   - [Masonry](http://masonry.desandro.com/) For listing cards in Timeline
+  - [Select2](https://select2.github.io/) For listing users when create Nottification
 
 ## License
 Code release under [Apache License 2.0](LICENSE)
