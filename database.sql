@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2016-04-10 21:11:41
+Date: 2016-04-14 19:30:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,6 +23,7 @@ CREATE TABLE `notifikasi` (
   `ID_NOTIFIKASI` char(36) NOT NULL,
   `JUDUL` varchar(100) NOT NULL,
   `PESAN` text NOT NULL,
+  `DATE_NOTIFIKASI` datetime NOT NULL,
   PRIMARY KEY (`ID_NOTIFIKASI`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

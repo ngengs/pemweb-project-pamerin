@@ -35,6 +35,9 @@ $config['url_delete_post'] = 'post/delete';
 $config['url_edit_comment'] = 'post/submit_comment_edit';
 $config['url_delete_comment'] = 'post/comment_delete';
 $config['url_report_post'] = 'post/submit_report';
+$config['url_notification_list'] = 'notification';
+$config['url_notification_page'] = 'notification/page/';
+$config['url_notification_read'] = 'notification/read/';
 
 $config['url_follow'] = 'profile/follow_user';
 $config['url_unfollow'] = 'profile/unfollow_user';
@@ -47,6 +50,8 @@ $config['url_settings_activate_user'] = 'settings/user_activate/';
 $config['url_admin_user'] = 'administrator/manage_user/';
 $config['url_admin_report'] = 'administrator/manage_report/';
 $config['url_admin_report_view'] = 'administrator/view_report/';
+$config['url_admin_notification_create'] = 'administrator/notification_create/';
+$config['url_admin_notification_submit'] = 'administrator/notification_submit/';
 
 $config['timeline_post'] = 12;
 $config['user_show'] = 10;

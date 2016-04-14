@@ -48,16 +48,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								    	<p class="form-control-static"><?php echo $report->DATE_REPORT;?></p>
 								    </div>
 						  		</div>
-							</div>
-							<div class="form form-horizontal">
 								<div class="form-group">
 								    <label for="inputPassword3" class="col-sm-2 control-label">Message</label>
 								    <div class="col-sm-10">
 								    	<p class="form-control-static"><?php echo prjct_text_generate_html($report->PESAN_REPORT);?></p>
 								    </div>
 						  		</div>
-							</div>
-							<div class="form form-horizontal">
 								<div class="form-group">
 								    <label for="inputPassword3" class="col-sm-2 control-label">Creator Post</label>
 								    <div class="col-sm-10">
@@ -80,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<a href="<?php echo base_url($this->config->item('url_single_post').'/'.$report->USERNAME.'/'.$report->ID_POST);?>" class="btn btn-default"><span class="fa fa-eye"></span> View Post</a>
 								</div>
 								<div class="action-right">
-									<button type="submit" class="btn btn-primary">Message Creator Post</button>
+									<button data-href="<?php echo base_url($this->config->item('url_admin_notification_create').$report->ID_USER);?>" type="submit" class="btn btn-primary link-script">Message Creator Post</button>
 								</div>
 							</div>
 						</footer>

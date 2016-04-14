@@ -9,7 +9,7 @@ class Global_model extends CI_Model{
 		$this->load->database();
     }
 	
-	public function generateid($value='')
+	public function generateid()
 	{
 		$id = NULL;
 		$this->db->select('GENERATEID() as ID',FALSE);

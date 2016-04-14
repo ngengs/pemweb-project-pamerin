@@ -281,6 +281,30 @@ $(document).ready(function(){
 			// });
 		// });
 	}
+	
+	if($('.select2-user').length){
+		$('.select2-user').select2({
+		  placeholder: "Select a user",
+		  allowClear: true,
+		  theme: 'bootstrap',
+		  templateResult: formatUser
+		});
+		$('.btn-select-all').click(function(e){
+			e.preventDefault();
+			$(".select2-user > option").prop("selected","selected");
+			$(".select2-user").trigger("change");
+		});
+		function formatUser(user) {
+			var $user_ava = $(user.element).data('ava');
+			var $user_fullname = $(user.element).data('fullname');
+			var $state = user.text;
+			if($user_ava!=null && $user_fullname!=null){
+				var $state = $('<span class="user-select-with-ava"><img class="img img-ava img-circle" src="'+$user_ava+'"/>'+user.text+' - '+$user_fullname+'</span>');	
+			}
+			return $state;
+		};
+	}
+	
 	if($('.number-change').length){
 		$('.number-change').each(function(e){
 			var $this = $(this);
