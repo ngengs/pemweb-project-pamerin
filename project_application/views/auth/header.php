@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title><?php if(!empty($title)) echo $title.' | ';?><?php echo $this->config->item('web_name');?></title>
 
     <!-- Bootstrap -->
-    <link href="<?php echo base_url();?>assets/css/pemweb_project.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/css/pemweb_project_pamerin.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/plugins/fileupload/css/fileinput.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

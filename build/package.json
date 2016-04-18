@@ -1,7 +1,7 @@
 {
-  "name": "pemweb_project",
-  "description": "Project pemweb.",
-  "version": "1.0.0",
+  "name": "pemweb_project_pamerin",
+  "description": "Project pemweb instagram look like.",
+  "version": "1.0.1",
   "keywords": [
     "css",
     "less",
@@ -11,8 +11,8 @@
     "framework",
     "web"
   ],
-  "homepage": "http://getbootstrap.com",
-  "author": "Twitter, Inc.",
+  "homepage": "https://github.com/ngengs/pemweb-project-pamerin",
+  "author": "Ivana Agustina x Rizky Kharisma",
   "scripts": {
     "test": "grunt test"
   },
@@ -21,10 +21,10 @@
   "main": "./dist/js/npm",
   "repository": {
     "type": "git",
-    "url": "https://github.com/twbs/bootstrap.git"
+    "url": "https://github.com/ngengs/pemweb-project-pamerin.git"
   },
   "bugs": {
-    "url": "https://github.com/twbs/bootstrap/issues"
+    "url": "https://github.com/ngengs/pemweb-project-pamerin/issues"
   },
   "license": "MIT",
   "devDependencies": {

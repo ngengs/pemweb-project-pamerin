@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?php echo base_url();?>assets/plugins/select2/css/select2.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="<?php echo base_url();?>assets/css/pemweb_project.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/css/pemweb_project_pamerin.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
