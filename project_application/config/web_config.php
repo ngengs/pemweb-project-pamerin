@@ -5,6 +5,13 @@ $config['web_name'] = "Pamerin";
 $config['web_logo'] = null;
 
 /**
+ * You can use number like 2016
+ * or date('Y') ind copyright_year
+ */
+$config['copyright_year'] = 2016;
+$config['copyright_holder'] = 'Pamerin .inc';
+
+/**
  * If purge_delete_post set TRUE it will permanent delete
  * from table and delete file
  * If set FALSE it will just set flag from table post
@@ -59,3 +66,13 @@ $config['list_show'] = 10;
 
 $config['regex_username'] = "/^[a-zA-Z0-9_]{3,15}$/";
 $config['regex_password'] = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/";
+
+/**
+ * Footer Menu in array
+ * aray('Menu Name'=>'Link',''=>'')
+ */
+$config['footer_menu'] = array(
+								'About Us'=>'#',
+								'Contact'=>'#',
+								'Terms'=>'#',
+								);
