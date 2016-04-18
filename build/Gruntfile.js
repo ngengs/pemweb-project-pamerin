@@ -42,8 +42,8 @@ module.exports = function (grunt) {
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*!\n' +
-            ' * Ivana Agustina v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
-            ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+            ' * Project Pamerin v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
+            ' * Copyright 2016-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
             ' * Licensed under the <%= pkg.license %> license\n' +
             ' */\n',
     jqueryCheck: configBridge.config.jqueryCheck.join('\n'),
@@ -127,6 +127,13 @@ module.exports = function (grunt) {
         dest: '../assets/js/<%= pkg.name %>.min.js'
       },
       app: {
+      	options: {
+	      banner: 	'/*!\n' +
+	        		' * Project Pamerin v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
+			        ' * Copyright 2016-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+			        ' * Licensed under the <%= pkg.license %> license\n' +
+			        ' */\n'
+		},
 	      files: [{
 	            expand: true,
 	            src: '*.js',
@@ -149,6 +156,11 @@ module.exports = function (grunt) {
     less: {
       compileCore: {
         options: {
+	      banner: 	'/*!\n' +
+	        		' * Project Pamerin v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
+			        ' * Copyright 2016-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+			        ' * Licensed under the <%= pkg.license %> license\n' +
+			        ' */\n',
           strictMath: true,
           sourceMap: true,
           outputSourceFiles: true,
@@ -186,7 +198,7 @@ module.exports = function (grunt) {
         // TODO: disable `zeroUnits` optimization once clean-css 3.2 is released
         //    and then simplify the fix for https://github.com/twbs/bootstrap/issues/14837 accordingly
         compatibility: 'ie8',
-        keepSpecialComments: false,
+        keepSpecialComments: true,
         sourceMap: true,
         advanced: false
       },
