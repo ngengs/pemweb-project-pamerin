@@ -286,3 +286,7 @@ Header unset Set-Cookie
 </IfModule>
 </FilesMatch>
 # END W3TC Browser Cache
+
+
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
