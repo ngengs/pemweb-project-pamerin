@@ -309,10 +309,10 @@ $(document).ready(function(){
 		$('.audio-wave').each(function(i,e){
 			var $src = $(this).data('src');
 			var $container = $(this).data('container');
-			console.log($container);
+			var items = Array('#ffeb3b','#f44336');
 			var wavesurfer = WaveSurfer.create({
 			    container: $container,
-			    progressColor: '#ffeb3b'
+			    progressColor: items[Math.floor(Math.random()*items.length)]
 			});
 			wavesurfer.load($src);
 			$($container+'-btn').on('click',function(e){
