@@ -108,6 +108,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?php echo base_url();?>assets/plugins/masonry/masonry.pkgd.min.js"></script>
     <script src="<?php echo base_url();?>assets/plugins/bootstrap-dialog/bootstrap-dialog.min.js"></script>
     <script src="<?php echo base_url();?>assets/plugins/select2/js/select2.full.min.js"></script>
+    <script src="<?php echo base_url();?>assets/plugins/wavesurfer/wavesurfer.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/system.min.js"></script>
   </body>
 </html>

@@ -305,6 +305,23 @@ $(document).ready(function(){
 		};
 	}
 	
+	if($('.audio-wave').length){
+		$('.audio-wave').each(function(i,e){
+			var $src = $(this).data('src');
+			var $container = $(this).data('container');
+			console.log($container);
+			var wavesurfer = WaveSurfer.create({
+			    container: $container,
+			    progressColor: '#ffeb3b'
+			});
+			wavesurfer.load($src);
+			$($container+'-btn').on('click',function(e){
+				e.preventDefault();
+				wavesurfer.playPause();
+			});
+		});
+	}
+	
 	if($('.number-change').length){
 		$('.number-change').each(function(e){
 			var $this = $(this);

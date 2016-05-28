@@ -56,9 +56,12 @@ foreach ($post as $key => $value) {
 								$mime = get_mime_by_extension($file_to_show);
 								if($mime=="audio/mpeg"){
 									?>
-									<audio controls>
-								  		<source src="<?php echo base_url($file_to_show);?>" type="audio/mpeg">
-								  	</audio>
+									<div class="audio-wave" data-src="<?php echo base_url($file_to_show);?>" data-container="#waveform-<?php echo str_replace('.','-',$value->PHOTOS[0]);?>">
+										<div id="waveform-<?php echo str_replace('.','-',$value->PHOTOS[0]);?>"></div>
+										<div class="text-center">
+											<button id="waveform-<?php echo str_replace('.','-',$value->PHOTOS[0]);?>-btn" class="btn btn-default">Play / Pause</button>
+										</div>
+									</div>
 									<?php
 								}else{
 								?>
@@ -74,9 +77,12 @@ foreach ($post as $key => $value) {
 									$mime = get_mime_by_extension($file_to_show);
 									if($mime=="audio/mpeg"){
 									?>
-										<audio controls>
-									  		<source src="<?php echo base_url($file_to_show);?>" type="audio/mpeg">
-									  	</audio>
+										<div class="audio-wave" data-src="<?php echo base_url($file_to_show);?>" data-container="#waveform-<?php echo str_replace('.','-',$photo);?>">
+											<div id="waveform-<?php echo str_replace('.','-',$photo);?>"></div>
+											<div class="text-center margin-bottom-md">
+												<button id="waveform-<?php echo str_replace('.','-',$photo);?>-btn" class="btn btn-default">Play / Pause</button>
+											</div>
+										</div>
 									<?php
 									}else{
 									?>
