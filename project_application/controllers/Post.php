@@ -217,7 +217,7 @@ class Post extends PRJCT_Controller {
                 $_FILES['image_upload']['size'] = $files['image_upload']['size'][$i];
 				
 				$config['upload_path'] = $dir."/";
-		        $config['allowed_types'] = 'jpg|png';
+		        $config['allowed_types'] = 'jpg|png|mp3';
 				$config['file_ext_tolower'] = TRUE;
 				$filename = date('YmdHis_').random_string('alpha', 8);
 				$config['file_name'] = $filename;
@@ -226,18 +226,21 @@ class Post extends PRJCT_Controller {
                     $data = $this->upload->data();
 					$images[] = $data['orig_name'];
 					
-					//Resize Image
-					$configi['image_library'] = 'gd2';
-					$configi['source_image'] = $data['full_path'];
-					if(!empty($data['image_width'])){
-						$configi['width']=$data['image_width'] - $this->config->item('web_image_size_minus');
+					if(!empty($data['is_image']) && $data['is_image']){
+						
+						//Resize Image
+						$configi['image_library'] = 'gd2';
+						$configi['source_image'] = $data['full_path'];
+						if(!empty($data['image_width'])){
+							$configi['width']=$data['image_width'] - $this->config->item('web_image_size_minus');
+						}
+						if(!empty($return['data']['image_height'])){
+							$configi['height']=$data['image_height'] - $this->config->item('web_image_size_minus');
+						}
+						$configi['quality'] = $this->config->item('web_image_quality');
+						$this->load->library('image_lib', $configi);
+						$this->image_lib->resize();
 					}
-					if(!empty($return['data']['image_height'])){
-						$configi['height']=$data['image_height'] - $this->config->item('web_image_size_minus');
-					}
-					$configi['quality'] = $this->config->item('web_image_quality');
-					$this->load->library('image_lib', $configi);
-					$this->image_lib->resize();
                 } else {
                     $error .= $this->upload->display_errors('', '') . "\r";
                 }

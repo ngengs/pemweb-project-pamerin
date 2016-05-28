@@ -32,8 +32,8 @@ $(document).ready(function(){
 	if($('.input-file').length){
 		$('.input-file').fileinput({
 			maxFileCount: 2,
-			allowedFileExtensions: ['jpg','png'],
-			maxFileSize: 2048,
+			allowedFileExtensions: ['jpg','png','mp3'],
+			maxFileSize: 12048,
 			maxFileCount: 10,
 			removeIcon: '<span class="fa fa-close"></span>',
 			browseIcon: '<span class="fa fa-folder-open"></span>',
