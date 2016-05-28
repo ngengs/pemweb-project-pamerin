@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		      <div class="modal-body">
 	      		<div class="form-group">
 				    <label>Image</label>
-					<input name="image_upload[]" accept=".jpg,.png" type="file" multiple class="input-file" required>
+					<input name="image_upload[]" accept=".jpg,.png,.mp3" type="file" multiple class="input-file" required>
 				</div>
 	      		<div class="form-group">
 				    <label>Caption</label>

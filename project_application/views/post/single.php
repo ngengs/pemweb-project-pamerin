@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+$this->load->helper('file');
 ?>
 
 	<?php if(!empty($error)){?>
@@ -73,19 +74,40 @@ $value=$post;
 						<?php } ?>
 						<div class="cards-body-image text-center">
 							<?php if(count($value->PHOTOS)==1){
-								$src = $this->config->item('media_path').'/'.$value->USERNAME.'/'.$this->config->item('media_upload').'/'.$value->PHOTOS[0];
+								$file_to_show = $this->config->item('media_path').'/'.$value->USERNAME.'/'.$this->config->item('media_upload').'/'.$value->PHOTOS[0];
+								$mime = get_mime_by_extension($file_to_show);
+								if($mime=="audio/mpeg"){
+									?>
+									<audio controls>
+								  		<source src="<?php echo base_url($file_to_show);?>" type="audio/mpeg">
+								  	</audio>
+									<?php
+								}else{
 								?>
-							<img src="<?php echo base_url($src);?>" class="img img-responsive img-responsive-center single-image img-popup">
+									<img src="<?php echo base_url($file_to_show);?>" class="img img-responsive img-responsive-center single-image">
+								<?php 
+									}
+								?>
 							<?php }else{ ?>
 								<div class="grid-image text-center">
 								<?php
 								foreach($value->PHOTOS as $key_photo => $photo){
-									$src = $this->config->item('media_path').'/'.$value->USERNAME.'/'.$this->config->item('media_upload').'/'.$photo;
-								?>
-								<!-- <div class="grid-image-photo text-center"> -->
-									<img src="<?php echo base_url($src);?>" class="img img-responsive img-responsive-center single-image img-popup">
-								<!-- </div> -->
-								
+									$file_to_show = $this->config->item('media_path').'/'.$value->USERNAME.'/'.$this->config->item('media_upload').'/'.$photo;
+									$mime = get_mime_by_extension($file_to_show);
+									if($mime=="audio/mpeg"){
+									?>
+										<audio controls>
+									  		<source src="<?php echo base_url($file_to_show);?>" type="audio/mpeg">
+									  	</audio>
+									<?php
+									}else{
+									?>
+									<!-- <div class="grid-image-photo text-center"> -->
+										<img src="<?php echo base_url($this->config->item('media_path').'/'.$value->USERNAME.'/'.$this->config->item('media_upload').'/'.$photo);?>" class="img img-responsive img-responsive-center single-image">
+									<!-- </div> -->
+									<?php 
+										}
+									?>
 							<?php } ?>
 								</div>
 							<?php } ?>
