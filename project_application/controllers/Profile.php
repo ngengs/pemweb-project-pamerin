@@ -16,6 +16,9 @@ class Profile extends PRJCT_Controller {
 			$user = $this->user_model->check($username);
 			if(!empty($user->result())){
 				$user = $user->result();
+				if($user[0]->IS_AKTIF==0){
+					show_404();exit;
+				}
 				$this->data['title'] = 'Profile @'.$username;
 				$user_for_timeline = array($user[0]->ID_USER);
 				$this->load->model('post_model');
