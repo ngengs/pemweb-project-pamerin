@@ -174,16 +174,24 @@ $(document).ready(function(){
 	}
 	
 	if($('.timeline-masonry').length){
-		// init Masonry
-		var $grid = $('.timeline-masonry').masonry({
-		  itemSelector: '.cards-column',
-		  // use element for option
-		  columnWidth: '.cards-column',
-		  percentPosition: true
-		});
-		// layout Masonry after each image loads
-		$grid.imagesLoaded().progress( function() {
-		  $grid.masonry('layout');
+		function  masonry_init(){
+			var $masonry_config = {
+				itemSelector: '.cards-column',
+				columnWidth: '.cards-column',
+				percentPosition: true
+			};
+			var $grid = $('.timeline-masonry').masonry($masonry_config);
+			if ($(window).width() < 720){
+				$grid.masonry('destroy');	
+			}else{
+				$grid.imagesLoaded().progress( function() {
+				  $grid.masonry('layout');
+				});
+			}
+		}
+		masonry_init();
+		$(window).resize(function(){
+			masonry_init();
 		});
 	}
 	
